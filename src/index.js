@@ -1,11 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import BoggleHeader from "./component/BoggleHeader";
+//import { addTime } from "./action";
+import { Provider } from "react-redux";
+import store from "./store.js";
+import { initTimer } from "./middleware.js";
+
+store.dispatch(initTimer());
+console.log(store.getState());
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-    <BoggleHeader />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById("root")
 );
