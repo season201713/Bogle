@@ -2,8 +2,11 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { useDispatch } from "react-redux";
+import { restartGame } from "../middleware.js";
 //import Button from "react-bootstrap/Button";
 const BoogleFooter = () => {
+  const dispatch = useDispatch();
   return (
     <Container>
       <Row>
@@ -18,7 +21,11 @@ const BoogleFooter = () => {
           </button>
         </Col>
         <Col md="4" className="Restart">
-          <button type="button" className="btn btn-outline-danger">
+          <button
+            type="button"
+            className="btn btn-outline-danger"
+            onClick={() => dispatch(restartGame())}
+          >
             Restart
           </button>
         </Col>

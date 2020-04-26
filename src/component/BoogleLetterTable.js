@@ -1,35 +1,19 @@
 import React from "react";
-
+import { useSelector } from "react-redux";
 const BoogleLetterTable = () => {
+  const letter = useSelector(state => state.letters);
   return (
-    <table className="table">
-      <tbody>
-        <tr>
-          <th scope="row">a</th>
-          <td>b</td>
-          <td>c</td>
-          <td>w</td>
-        </tr>
-        <tr>
-          <th scope="row">a</th>
-          <td>b</td>
-          <td>c</td>
-          <td>w</td>
-        </tr>
-        <tr>
-          <th scope="row">a</th>
-          <td>b</td>
-          <td>c</td>
-          <td>w</td>
-        </tr>
-        <tr>
-          <th scope="row">a</th>
-          <td>b</td>
-          <td>c</td>
-          <td>w</td>
-        </tr>
-      </tbody>
-    </table>
+    <div className="board">
+      {letter.map((letterArray, i) => (
+        <div key={"a" + i} className="board-row">
+          {letterArray.map((letter, index) => (
+            <button key={index} type="button" className="btn btn-light boggle">
+              {letter.toUpperCase()}
+            </button>
+          ))}
+        </div>
+      ))}
+    </div>
   );
 };
 export default BoogleLetterTable;

@@ -3,7 +3,7 @@ import React from "react";
 const BoogleCorrectWords = () => {
   return (
     <div>
-      <div>asd</div>
+      <div></div>
     </div>
   );
 };

@@ -7,26 +7,27 @@ import BoogleLetterTable from "./component/BoogleLetterTable";
 import BoogleFooter from "./component/BoogleFooter";
 import BoogleUserWord from "./component/BoogleUseWord";
 import BoogleCorrectWords from "./component/BoogleCorrectWords";
-
+import BoggleOver from "./component/BoggleOver";
 const App = () => {
   return (
     <Container>
       <BoggleHeader />
       <hr />
       <Row>
-        <Col md="8" className="letter-container">
-          <div className="table-dark">
+        <Col md="6" className="letter-container">
+          <div>
             <BoogleLetterTable />
             <BoogleFooter />
           </div>
         </Col>
-        <Col md="4" className="RuleUesedword-container">
+        <Col md="6" className="RuleUesedword-container">
           <div className="table-dark">
             <BoogleUserWord />
             <BoogleCorrectWords />
           </div>
         </Col>
       </Row>
+      <BoggleOver />
     </Container>
   );
 };

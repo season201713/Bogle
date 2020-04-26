@@ -4,10 +4,11 @@ import App from "./App";
 //import { addTime } from "./action";
 import { Provider } from "react-redux";
 import store from "./store.js";
-import { initTimer } from "./middleware.js";
+import { initTimer, getLetter } from "./middleware.js";
 
 store.dispatch(initTimer());
-console.log(store.getState());
+store.dispatch(getLetter());
+
 ReactDOM.render(
   <Provider store={store}>
     <App />
