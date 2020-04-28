@@ -6,6 +6,7 @@ import startgame from "./startgame.js";
 import addletter from "./addletter.js";
 import AddedWordReducer from "./AddedWordReducer";
 import AlertReducer from "./AlertReducer";
+import AddKeyReducer from "./AddKeyReducer";
 import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   startgame,
   addletter,
   AddedWordReducer,
-  AlertReducer
+  AlertReducer,
+  AddKeyReducer
 });
 
 export default rootReducer;
