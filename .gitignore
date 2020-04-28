@@ -24,4 +24,4 @@ yarn-error.log*
 
 boogle design.jpg
 .cache
-/dist
+/dist/*
