@@ -8,6 +8,7 @@ import BoogleFooter from "./component/BoogleFooter";
 import BoogleUserWord from "./component/BoogleUseWord";
 import BoogleCorrectWords from "./component/BoogleCorrectWords";
 import BoggleOver from "./component/BoggleOver";
+import BoogleRules from "./component/BoogleRules";
 const App = () => {
   return (
     <Container>
@@ -28,6 +29,7 @@ const App = () => {
         </Col>
       </Row>
       <BoggleOver />
+      <BoogleRules />
     </Container>
   );
 };

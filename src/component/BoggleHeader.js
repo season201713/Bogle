@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 
 const BoggleHeader = () => {
   const timer = useSelector(state => state.timerReducer);
+  const counter = useSelector(state => state.counter);
   return (
     <Navbar bg="dark" variant="dark">
       <NavbarBrand href="/">Boggle</NavbarBrand>
@@ -15,7 +16,7 @@ const BoggleHeader = () => {
           Time: {("0" + Math.floor(timer / 60).toString()).slice(-2)}:
           {("0" + (timer - Math.floor(timer / 60) * 60).toString()).slice(-2)}
         </Navbar.Text>
-        <Navbar.Text>Score:</Navbar.Text>
+        <Navbar.Text>Score:{counter}</Navbar.Text>
       </Navbar.Collapse>
     </Navbar>
   );

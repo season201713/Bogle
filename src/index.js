@@ -4,9 +4,9 @@ import App from "./App";
 //import { addTime } from "./action";
 import { Provider } from "react-redux";
 import store from "./store.js";
-import { initTimer, getLetter } from "./middleware.js";
+import { Gamestart, getLetter } from "./middleware.js";
 
-store.dispatch(initTimer());
+store.dispatch(Gamestart());
 store.dispatch(getLetter());
 
 ReactDOM.render(

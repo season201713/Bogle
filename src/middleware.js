@@ -1,14 +1,38 @@
-import { addTime, resetTime, letters, showModal, resetModal } from "./action";
-
+import {
+  addTime,
+  resetTime,
+  letters,
+  showModal,
+  resetModal,
+  StartGame,
+  RESETLETTER,
+  ADDWORD,
+  RESETWORD,
+  UPDATEALERT,
+  RESETALERT,
+  INCREMENT,
+  RESETSCORE
+} from "./action";
 export const restartGame = () => {
   return function(dispatch) {
     clearInterval(window.timerInterval);
     dispatch(resetTime());
+    dispatch(RESETSCORE());
     dispatch(getLetter());
     dispatch(resetModal());
+    dispatch(RESETWORD());
+    dispatch(RESETALERT());
   };
 };
-
+export const Gamestart = () => {
+  return function(dispatch) {
+    dispatch(
+      StartGame({
+        display: true
+      })
+    );
+  };
+};
 export const initTimer = () => {
   return function(dispatch, getState) {
     clearInterval(window.timerInterval);
@@ -30,6 +54,77 @@ export const initTimer = () => {
         clearInterval();
       }
     }, 1000);
+  };
+};
+
+export const getScore = data => {
+  return function(dispatch, getState) {
+    clearTimeout(window.alertTimeout);
+    const { AddedWordReducer } = getState();
+    dispatch(RESETLETTER());
+    if (data.length <= 2) {
+      dispatch(
+        UPDATEALERT({
+          display: true,
+          variant: "danger",
+          message:
+            "Oops " + data.toUpperCase() + " must have more then two syllables"
+        })
+      );
+      clearInterval(window.timerInterval);
+      window.setTimeout(() => {
+        dispatch(RESETALERT());
+      }, 3000);
+    } else if (AddedWordReducer.indexOf(data) !== -1) {
+      dispatch(
+        UPDATEALERT({
+          display: true,
+          variant: "danger",
+          message: "Oops,you cant submit " + data.toUpperCase() + " twice"
+        })
+      );
+      clearInterval(window.timerInterval);
+      window.setTimeout(() => {
+        dispatch(RESETALERT());
+      }, 3000);
+    } else {
+      fetch("http://localhost/bogle/api/getscore.php?data=" + data).then(res =>
+        res.json().then(result => {
+          if (result["status"] === "ok") {
+            dispatch(ADDWORD([data]));
+            dispatch(INCREMENT(result["point"]));
+            dispatch(
+              UPDATEALERT({
+                display: true,
+                variant: "success",
+                message:
+                  data.toUpperCase() + " yipiee " + result["point"] + " points"
+              })
+            );
+            clearInterval(window.timerInterval);
+            window.setTimeout(() => {
+              dispatch(RESETALERT());
+            }, 3000);
+          } else if (result["status"] === "not found") {
+            dispatch(
+              UPDATEALERT({
+                display: true,
+                variant: "danger",
+                message: data.toUpperCase() + " is Not A Word"
+              })
+            );
+          } else {
+            dispatch(
+              UPDATEALERT({
+                display: true,
+                variant: "danger",
+                message: result["status"]
+              })
+            );
+          }
+        })
+      );
+    }
   };
 };
 

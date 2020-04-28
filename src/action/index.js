@@ -27,3 +27,61 @@ export const resetModal = () => {
     type: "RESETMODAL"
   };
 };
+
+export const StartGame = data => {
+  return {
+    type: "StartGame",
+    payload: data
+  };
+};
+
+export const ADDLETTER = data => {
+  return {
+    type: "ADDLETTER",
+    payload: data
+  };
+};
+
+export const RESETLETTER = () => {
+  return {
+    type: "RESETLETTER"
+  };
+};
+
+export const ADDWORD = word => {
+  return {
+    type: "ADDWORD",
+    payload: word
+  };
+};
+
+export const RESETWORD = () => {
+  return {
+    type: "RESETWORD"
+  };
+};
+
+export const UPDATEALERT = data => {
+  return {
+    type: "UPDATEALERT",
+    payload: data
+  };
+};
+
+export const RESETALERT = () => {
+  return {
+    type: "RESETALERT"
+  };
+};
+
+export const INCREMENT = data => {
+  return {
+    type: "INCREMENT",
+    payload: data
+  };
+};
+export const RESETSCORE = () => {
+  return {
+    type: "RESETSCORE"
+  };
+};

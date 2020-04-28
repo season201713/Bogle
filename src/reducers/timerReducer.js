@@ -1,4 +1,4 @@
-const timeReducer = (state = 170, action) => {
+const timeReducer = (state = 0, action) => {
   switch (action.type) {
     case "ADDTIME":
       return state + 1;
