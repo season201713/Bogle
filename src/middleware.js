@@ -11,7 +11,8 @@ import {
   UPDATEALERT,
   RESETALERT,
   INCREMENT,
-  RESETSCORE
+  RESETSCORE,
+  RESETKEY
 } from "./action";
 export const restartGame = () => {
   return function(dispatch) {
@@ -22,6 +23,8 @@ export const restartGame = () => {
     dispatch(resetModal());
     dispatch(RESETWORD());
     dispatch(RESETALERT());
+    dispatch(RESETLETTER());
+    dispatch(RESETKEY());
   };
 };
 export const Gamestart = () => {
@@ -71,6 +74,8 @@ export const getScore = data => {
             "Oops " + data.toUpperCase() + " must have more then two syllables"
         })
       );
+      dispatch(RESETLETTER());
+      dispatch(RESETKEY());
       clearInterval(window.timerInterval);
       window.setTimeout(() => {
         dispatch(RESETALERT());
@@ -83,6 +88,8 @@ export const getScore = data => {
           message: "Oops,you cant submit " + data.toUpperCase() + " twice"
         })
       );
+      dispatch(RESETLETTER());
+      dispatch(RESETKEY());
       clearInterval(window.timerInterval);
       window.setTimeout(() => {
         dispatch(RESETALERT());
@@ -101,6 +108,8 @@ export const getScore = data => {
                   data.toUpperCase() + " yipiee " + result["point"] + " points"
               })
             );
+            dispatch(RESETLETTER());
+            dispatch(RESETKEY());
             clearInterval(window.timerInterval);
             window.setTimeout(() => {
               dispatch(RESETALERT());

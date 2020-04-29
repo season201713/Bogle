@@ -6,7 +6,7 @@ import Alert from "react-bootstrap/Alert";
 import { useDispatch, useSelector } from "react-redux";
 import { restartGame, getScore } from "../middleware.js";
 //import Button from "react-bootstrap/Button";
-import { RESETLETTER } from "../action";
+import { RESETLETTER, RESETKEY } from "../action";
 const BoogleFooter = () => {
   const word = useSelector(state => state.addletter);
   const alert = useSelector(state => state.AlertReducer);
@@ -35,6 +35,7 @@ const BoogleFooter = () => {
             className="btn btn-outline-warning"
             onClick={() => {
               dispatch(RESETLETTER());
+              dispatch(RESETKEY());
             }}
           >
             Cancel

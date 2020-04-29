@@ -85,3 +85,16 @@ export const RESETSCORE = () => {
     type: "RESETSCORE"
   };
 };
+
+export const ADDKEY = data => {
+  return {
+    type: "ADDKEY",
+    payload: data
+  };
+};
+
+export const RESETKEY = () => {
+  return {
+    type: "RESETKEY"
+  };
+};
