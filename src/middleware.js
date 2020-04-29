@@ -122,6 +122,8 @@ export const getScore = data => {
                 message: data.toUpperCase() + " is Not A Word"
               })
             );
+            dispatch(RESETLETTER());
+            dispatch(RESETKEY());
           } else {
             dispatch(
               UPDATEALERT({

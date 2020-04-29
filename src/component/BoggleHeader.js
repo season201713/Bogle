@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 const BoggleHeader = () => {
   const timer = useSelector(state => state.timerReducer);
   const counter = useSelector(state => state.counter);
+
   return (
     <Navbar bg="dark" variant="dark">
       <NavbarBrand href="/">Boggle</NavbarBrand>
